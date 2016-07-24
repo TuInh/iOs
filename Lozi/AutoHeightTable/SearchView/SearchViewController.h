@@ -20,6 +20,8 @@
 
 @property(nonatomic, strong) NSMutableArray* sectionContentArray;
 @property(nonatomic, strong) MyTableView* myTableView;
+
+@property(nonatomic, strong) UIView* searchBarContainer;
 @property(nonatomic, strong) UIButton* backButton;
 @property(nonatomic, strong) UISearchBar* searchBar;
 

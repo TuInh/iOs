@@ -22,7 +22,7 @@
 +(void) SetCityID:(int)cityID;
 
 +(long) GetClientID;
-+(void) SetClienID:(NSString*)clientID;
++(void) SetClienID:(long)clientID;
 
 
 

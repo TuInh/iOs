@@ -105,14 +105,14 @@
     self.carbonTabSwipeNavigation.toolbar.translucent = NO;
     
     [self.carbonTabSwipeNavigation setIndicatorColor:[UIColor redColor]];
-    [self.carbonTabSwipeNavigation setTabExtraWidth:30];
+    [self.carbonTabSwipeNavigation setTabExtraWidth:20];
     
     
     // Custimize segmented control
     [self.carbonTabSwipeNavigation setNormalColor:[UIColor blackColor]
-                                        font:[UIFont boldSystemFontOfSize:14]];
+                                        font:[UIFont boldSystemFontOfSize:13]];
     [self.carbonTabSwipeNavigation setSelectedColor:[UIColor redColor]
-                                          font:[UIFont boldSystemFontOfSize:14]];
+                                          font:[UIFont boldSystemFontOfSize:13]];
     
 
 }

@@ -21,7 +21,7 @@
     float searchBarHeight = searchContainerHeight - 2.0f * marginSearch;
     float searchBarWidth = self.view.frame.size.width - 4.0f * marginSearch - searchBarHeight * 2.0f;
 
-    self.searchViewContainer = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 40.0f, self.view.frame.size.width, searchContainerHeight)];
+    self.searchViewContainer = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 30.0f, self.view.frame.size.width, searchContainerHeight)];
     [self.searchViewContainer setBackgroundColor:[UIColor whiteColor]];
     [self.view addSubview:self.searchViewContainer];
     

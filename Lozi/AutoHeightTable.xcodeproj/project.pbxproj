@@ -68,7 +68,6 @@
 		F1AEFD3B1D418AF600552676 /* AlbumUserTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F1AEFD251D418AF600552676 /* AlbumUserTableViewCell.m */; };
 		F1AEFD3C1D418AF600552676 /* AnnotationMap.m in Sources */ = {isa = PBXBuildFile; fileRef = F1AEFD271D418AF600552676 /* AnnotationMap.m */; };
 		F1AEFD3D1D418AF600552676 /* CustomViewSearch.m in Sources */ = {isa = PBXBuildFile; fileRef = F1AEFD291D418AF600552676 /* CustomViewSearch.m */; };
-		F1AEFD3E1D418AF600552676 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1AEFD2B1D418AF600552676 /* DetailViewController.m */; };
 		F1AEFD3F1D418AF600552676 /* MenuFoodLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1AEFD2D1D418AF600552676 /* MenuFoodLocationViewController.m */; };
 		F1AEFD401D418AF600552676 /* MyTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = F1AEFD2F1D418AF600552676 /* MyTableView.m */; };
 		F1AEFD411D418AF600552676 /* RecommendTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F1AEFD311D418AF600552676 /* RecommendTableViewCell.m */; };
@@ -233,8 +232,6 @@
 		F1AEFD271D418AF600552676 /* AnnotationMap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnnotationMap.m; sourceTree = "<group>"; };
 		F1AEFD281D418AF600552676 /* CustomViewSearch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomViewSearch.h; sourceTree = "<group>"; };
 		F1AEFD291D418AF600552676 /* CustomViewSearch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomViewSearch.m; sourceTree = "<group>"; };
-		F1AEFD2A1D418AF600552676 /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
-		F1AEFD2B1D418AF600552676 /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
 		F1AEFD2C1D418AF600552676 /* MenuFoodLocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuFoodLocationViewController.h; sourceTree = "<group>"; };
 		F1AEFD2D1D418AF600552676 /* MenuFoodLocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuFoodLocationViewController.m; sourceTree = "<group>"; };
 		F1AEFD2E1D418AF600552676 /* MyTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyTableView.h; sourceTree = "<group>"; };
@@ -542,8 +539,6 @@
 				F1AEFD271D418AF600552676 /* AnnotationMap.m */,
 				F1AEFD281D418AF600552676 /* CustomViewSearch.h */,
 				F1AEFD291D418AF600552676 /* CustomViewSearch.m */,
-				F1AEFD2A1D418AF600552676 /* DetailViewController.h */,
-				F1AEFD2B1D418AF600552676 /* DetailViewController.m */,
 				F1AEFD2C1D418AF600552676 /* MenuFoodLocationViewController.h */,
 				F1AEFD2D1D418AF600552676 /* MenuFoodLocationViewController.m */,
 				F1AEFD2E1D418AF600552676 /* MyTableView.h */,
@@ -871,7 +866,6 @@
 				F1200A8B1D367D9B002FD45D /* BannerViewController.m in Sources */,
 				F1200AB51D39C01D002FD45D /* CommentModel.m in Sources */,
 				F1403EF01D333C0E0026FDB5 /* AppConfig.m in Sources */,
-				F1AEFD3E1D418AF600552676 /* DetailViewController.m in Sources */,
 				F18880421CEB2C8F00E38EBD /* DishModel.m in Sources */,
 				F1200A801D367D8C002FD45D /* ShipViewController.m in Sources */,
 				F15FC5621CEB7B69001B1A20 /* FoodLoader.m in Sources */,

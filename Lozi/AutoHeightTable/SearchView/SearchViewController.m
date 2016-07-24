@@ -33,24 +33,29 @@
     [self.sectionContentArray addObject:popularDictionary];
 
     [self.view setFrame:[[UIScreen mainScreen] bounds]];
-    [self.view setBackgroundColor:[UIColor whiteColor]];
+    [self.view setBackgroundColor:[AppConfig GetAppBackgroundColor]];
     
     float viewMargin = [AppConfig GetViewMargin];
-    
+    float menuPadding = 5.0f;
     float searchBarHeight = self.view.frame.size.height / 18.0f;
-    float searchBarTop = 40;
-    self.backButton = [[UIButton alloc] initWithFrame:CGRectMake(viewMargin, searchBarTop, searchBarHeight, searchBarHeight)];
+    float searchBarTop = 30;
+    
+    self.searchBarContainer = [[UIView alloc] initWithFrame:CGRectMake(0, searchBarTop, self.view.frame.size.width, searchBarHeight + 2.0f * menuPadding)];
+    [self.searchBarContainer setBackgroundColor:[UIColor whiteColor]];
+    [self.view addSubview:self.searchBarContainer];
+    
+    self.backButton = [[UIButton alloc] initWithFrame:CGRectMake(viewMargin, menuPadding, searchBarHeight, searchBarHeight)];
     [self.backButton setImage:[UIImage imageNamed:@"leftArrowBlue"] forState:UIControlStateNormal];
     [self.backButton addTarget:self action:@selector(onBackButtonTouch:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:self.backButton];
+    [self.searchBarContainer addSubview:self.backButton];
     
-    self.searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(self.backButton.frame.origin.x + self.backButton.frame.size.width, searchBarTop, self.view.frame.size.width - self.backButton.frame.origin.x - self.backButton.frame.size.width - viewMargin * 2.0f, searchBarHeight)];
+    self.searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(self.backButton.frame.origin.x + self.backButton.frame.size.width, menuPadding, self.view.frame.size.width - self.backButton.frame.origin.x - self.backButton.frame.size.width - viewMargin * 2.0f, searchBarHeight)];
     [self.searchBar setSearchBarStyle:UISearchBarStyleMinimal];
     [self.searchBar setDelegate:self];
     [self.searchBar setText:@""];
-    [self.view addSubview:self.searchBar];
+    [self.searchBarContainer addSubview:self.searchBar];
     
-    float tableTop = self.searchBar.frame.origin.y + self.searchBar.frame.size.height;
+    float tableTop = self.searchBarContainer.frame.origin.y + self.searchBarContainer.frame.size.height;
     self.myTableView = [[MyTableView alloc] initWithFrame:CGRectMake(0,
                                                                      tableTop,
                                                                      self.view.frame.size.width,
