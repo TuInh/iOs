@@ -36,7 +36,7 @@
     
     [self.searchContainer addSubview:self.searchBar];
     
-    float comboboxHeight = self.view.frame.size.height / 19.0f;
+    float comboboxHeight = self.view.frame.size.height / 16.0f;
     float comboboxWidth = self.view.frame.size.width / 5.0f;
     self.comboTextField = [[UIButton alloc] initWithFrame:CGRectMake(menuPadding, menuPadding + 3.0f, comboboxWidth, comboboxHeight - 6.0f)];
     [self.searchContainer addSubview:self.comboTextField];
@@ -110,9 +110,9 @@
     
     // Custimize segmented control
     [self.carbonTabSwipeNavigation setNormalColor:[UIColor blackColor]
-                                        font:[UIFont boldSystemFontOfSize:13]];
+                                        font:[UIFont boldSystemFontOfSize:14]];
     [self.carbonTabSwipeNavigation setSelectedColor:[UIColor redColor]
-                                          font:[UIFont boldSystemFontOfSize:13]];
+                                          font:[UIFont boldSystemFontOfSize:14]];
     
 
 }

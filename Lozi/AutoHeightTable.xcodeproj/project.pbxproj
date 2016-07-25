@@ -703,6 +703,7 @@
 				TargetAttributes = {
 					F1E42F1B1CDEEB55006D68A0 = {
 						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = P8VF2NXEF8;
 					};
 					F1E42F371CDEEB56006D68A0 = {
 						CreatedOnToolsVersion = 7.3;
