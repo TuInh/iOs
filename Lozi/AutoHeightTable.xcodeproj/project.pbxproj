@@ -53,6 +53,7 @@
 		F18880421CEB2C8F00E38EBD /* DishModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F18880411CEB2C8F00E38EBD /* DishModel.m */; };
 		F18880451CEB2D5300E38EBD /* EateryModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F18880441CEB2D5300E38EBD /* EateryModel.m */; };
 		F18880481CEB2E0200E38EBD /* FoodCountModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F18880471CEB2E0200E38EBD /* FoodCountModel.m */; };
+		F1919ACF1D46C8AC00B566E2 /* AroundSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1919ACE1D46C8AC00B566E2 /* AroundSearchViewController.m */; };
 		F19288201D0C0E31000FA548 /* DataLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = F192881F1D0C0E31000FA548 /* DataLoader.m */; };
 		F19288231D0C220F000FA548 /* BannerLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = F19288221D0C220F000FA548 /* BannerLoader.m */; };
 		F1AB82241D339E4F005B3A0F /* CategoryModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F1AB82231D339E4F005B3A0F /* CategoryModel.m */; };
@@ -202,6 +203,8 @@
 		F18880441CEB2D5300E38EBD /* EateryModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EateryModel.m; sourceTree = "<group>"; };
 		F18880461CEB2E0200E38EBD /* FoodCountModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FoodCountModel.h; sourceTree = "<group>"; };
 		F18880471CEB2E0200E38EBD /* FoodCountModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FoodCountModel.m; sourceTree = "<group>"; };
+		F1919ACD1D46C8AC00B566E2 /* AroundSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AroundSearchViewController.h; sourceTree = "<group>"; };
+		F1919ACE1D46C8AC00B566E2 /* AroundSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AroundSearchViewController.m; sourceTree = "<group>"; };
 		F192881E1D0C0E31000FA548 /* DataLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataLoader.h; sourceTree = "<group>"; };
 		F192881F1D0C0E31000FA548 /* DataLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataLoader.m; sourceTree = "<group>"; };
 		F19288211D0C220F000FA548 /* BannerLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BannerLoader.h; sourceTree = "<group>"; };
@@ -332,10 +335,10 @@
 				F1AEFD191D418ABA00552676 /* FoodSearchModel.m */,
 				F1AEFD1A1D418ABA00552676 /* MenuModel.h */,
 				F1AEFD1B1D418ABA00552676 /* MenuModel.m */,
+				F1200AB41D39C01D002FD45D /* CommentModel.m */,
 				F1AEFD151D418AAB00552676 /* FoodLocationModel.h */,
 				F1AEFD161D418AAB00552676 /* FoodLocationModel.m */,
 				F1200AB31D39C01D002FD45D /* CommentModel.h */,
-				F1200AB41D39C01D002FD45D /* CommentModel.m */,
 				F1403EF71D333C350026FDB5 /* AroundModel.h */,
 				F1403EF81D333C350026FDB5 /* AroundModel.m */,
 				F103616C1CE9E19200A16479 /* UploaderModel.h */,
@@ -529,6 +532,8 @@
 		F1AEFD211D418AF600552676 /* SearchView */ = {
 			isa = PBXGroup;
 			children = (
+				F1919ACD1D46C8AC00B566E2 /* AroundSearchViewController.h */,
+				F1919ACE1D46C8AC00B566E2 /* AroundSearchViewController.m */,
 				F1AEFD461D418BA300552676 /* UserDetailViewController.h */,
 				F1AEFD471D418BA300552676 /* UserDetailViewController.m */,
 				F1AEFD221D418AF600552676 /* AlbumDetailViewController.h */,
@@ -857,6 +862,7 @@
 				F1FD14C01D05C2D1008F4596 /* BannerModel.m in Sources */,
 				F1403EE01D2D820D0026FDB5 /* CarbonSwipeRefresh.m in Sources */,
 				F1200AC71D39D732002FD45D /* FoodCollectionViewCellBig.m in Sources */,
+				F1919ACF1D46C8AC00B566E2 /* AroundSearchViewController.m in Sources */,
 				F1AEFD3D1D418AF600552676 /* CustomViewSearch.m in Sources */,
 				F1200AA61D367E2C002FD45D /* CategoryCollectionView.m in Sources */,
 				F1AEFD481D418BA300552676 /* UserDetailViewController.m in Sources */,

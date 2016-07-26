@@ -13,11 +13,10 @@
 @end
 
 @implementation AlbumDetailViewController
-BOOL isAnnotation;
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    isAnnotation = NO;
+    self.isAnnotation = NO;
     self.view.backgroundColor = [UIColor whiteColor];
     CGSize size = [UIScreen mainScreen].bounds.size;
     CGFloat w = size.width;
@@ -64,9 +63,7 @@ BOOL isAnnotation;
     _map.zoomEnabled = YES;
     _map.scrollEnabled = YES;
     
-    _cityID = @"50";
-    NSString *urlComment = [NSString stringWithFormat:@"%@%@/followers?cityId=%@",[AppConfig GetSlugAlbumBase],_album._id,_cityID];
-    NSLog(@"%@",urlComment);
+    NSString *urlComment = [NSString stringWithFormat:@"%@%@/followers?cityId=%ld",[AppConfig GetSlugAlbumBase],_album._id,[AppConfig GetCityID]];
     [self SendRequest:urlComment];
     // initial data
     _followerArray = [[NSMutableArray alloc]init];
@@ -146,16 +143,19 @@ BOOL isAnnotation;
 
     _scrollView.contentSize = CGSizeMake(w, _viewFollower.frame.size.height+_viewFollower.frame.origin.y+0);
     
-    NSString *remainUrlBlock =[NSString stringWithFormat:@"/albums/%@/blocks?cityId=%@",_album._id,_cityID];
+    NSString *remainUrlBlock =[NSString stringWithFormat:@"%@/albums/%@/blocks?cityId=%ld", [AppConfig GetBaseNextPageUrl], _album._id,[AppConfig GetCityID]];
    FoodCollectionViewLayout* collectionLayout = [[FoodCollectionViewLayout alloc] init];
-    self.foodCollectionView = [[FoodCollectionView alloc] initWithFrame:CGRectMake(0, _viewFollower.frame.origin.y+_viewFollower.frame.size.height, w, 3000) collectionViewLayout:collectionLayout];
+    self.foodCollectionView = [[FoodCollectionView alloc] initWithFrame:CGRectMake(0, _viewFollower.frame.origin.y+_viewFollower.frame.size.height, w, 10) collectionViewLayout:collectionLayout];
     self.foodCollectionView.showsVerticalScrollIndicator = false;
+    [self.foodCollectionView setParentScrollView:self.scrollView];
+    self.foodCollectionView.parentViewContoller = self;
     _foodLoader = [[FoodLoader alloc] init];
     [_foodLoader setDataLoaderDelegate:self];
     [self.foodCollectionView setDataLoader:_foodLoader withStartPage:remainUrlBlock];
     [_scrollView addSubview:self.foodCollectionView];
     _scrollView.contentSize = CGSizeMake(w, _foodCollectionView.frame.origin.y + _foodCollectionView.frame.size.height);
 
+    [_scrollView setDelegate: self];
     
 }
 
@@ -167,10 +167,9 @@ BOOL isAnnotation;
      dispatch_async(dispatch_get_main_queue(),
      ^
      {
-         [self.foodCollectionView reloadData];
-         if(isAnnotation == NO && _foodLoader.dataArray.count >0)
+         if(self.isAnnotation == NO && _foodLoader.dataArray.count >0)
          {
-             isAnnotation = YES;
+             self.isAnnotation = YES;
              FoodModel *foodmodel = [_foodLoader.dataArray objectAtIndex:0];
              CLLocationDegrees lattitude = [[foodmodel.eateryCoords objectAtIndex:1] floatValue];
              CLLocationDegrees longtitude = [[foodmodel.eateryCoords objectAtIndex:0] floatValue];
@@ -196,7 +195,6 @@ BOOL isAnnotation;
                  annotation.tag = i;
                  [_map addAnnotation:annotation];
              }
-             NSLog(@"number annotation %lu", (unsigned long)_map.annotations.count);
              
          }
      });
@@ -233,10 +231,20 @@ BOOL isAnnotation;
 
 }
 
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    if (scrollView.contentOffset.y >= (scrollView.contentSize.height - scrollView.frame.size.height)) {
+        [self.foodCollectionView goToNextPage];
+    }
+    
+    
+    if (scrollView.contentOffset.y >= (scrollView.contentSize.height - scrollView.frame.size.height)) {
+        [self.foodCollectionView goToNextPage];
+    }
+}
+
 //Selector for back button
 -(IBAction)backToPrevious:(id)sender
 {
-    NSLog(@"Back btn");
     
     dispatch_async(dispatch_get_main_queue(), ^{
         [self dismissViewControllerAnimated:YES completion:nil];

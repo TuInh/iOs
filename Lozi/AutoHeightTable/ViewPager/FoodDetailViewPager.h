@@ -20,5 +20,5 @@
 
 @property (strong, nonatomic) UIPageViewControllerWithOverlayIndicator *pageController;
 @property (strong, nonatomic) NSArray<FoodModel*>* foodModelArray;
-
+@property (strong, nonatomic) FoodModel* firstFoodModel;
 @end

@@ -11,5 +11,8 @@
 
 @interface FoodCollectionViewCell : UICollectionViewCell
 @property(nonatomic, strong) NSArray<FoodModel*>* foodModelArray;
+@property(nonatomic, strong) UIViewController* paremtViewControler;
+
 -(void) loadDataModel:(FoodModel*) foodModel;
+-(UIColor*) randomColor;
 @end

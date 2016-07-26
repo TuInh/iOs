@@ -8,6 +8,7 @@
 
 #import "AroundCollectionView.h"
 #import "DataLoader.h"
+#import "AroundSearchViewController.h"
 
 @implementation AroundCollectionView
 
@@ -97,7 +98,8 @@
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     AroundCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"AroundCollectionViewCell" forIndexPath:indexPath];
-    AroundModel *model =  [_aroundDataArray objectAtIndex:indexPath.row];
+    
+    AroundModel *model =  [_aroundDataArray objectAtIndex:indexPath.item];
     [cell.avatar sd_setImageWithURL:[NSURL URLWithString: model.image]];
     return cell;
 }
@@ -168,6 +170,26 @@
         }
     }];
     [task resume];
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (self.parentViewController != nil)
+    {
+        if (_aroundDataArray != nil)
+        {
+            if ((indexPath.item >=0) && (indexPath.item < _aroundDataArray.count))
+            {
+                AroundModel *model =  [_aroundDataArray objectAtIndex:indexPath.item];
+                AroundSearchViewController* aroundViewController = [[AroundSearchViewController alloc] init];
+                
+                aroundViewController.aroundModel = model;
+                [self.parentViewController presentViewController:aroundViewController animated:false completion:nil];
+            }
+        }
+        
+    }
+
 }
 
 @end

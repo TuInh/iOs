@@ -20,6 +20,7 @@
 @property(nonatomic, strong) DataLoader* dataLoader;
 @property(nonatomic, assign) int numberOfItemPerRow;
 @property(nonatomic, assign) UIScrollView* parentScrollView;
+@property(nonatomic, assign) UIViewController* parentViewContoller;
 
 -(void) initViewLayout;
 -(void) setDataLoader:(DataLoader*) newDataLoader;

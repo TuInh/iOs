@@ -18,7 +18,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [AppConfig SetMainController:self];
+    //[AppConfig SetMainController:self];
     [self.view setBackgroundColor:[AppConfig GetAppBackgroundColor]];
 
     
@@ -90,7 +90,6 @@
     [self style];
     [self.carbonTabSwipeNavigation setCurrentTabIndex:1];
 
-    
     
 }
 

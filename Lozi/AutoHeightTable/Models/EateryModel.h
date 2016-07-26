@@ -18,6 +18,7 @@
 @end
 
 @interface EateryModel : JSONModel
+    @property (strong,nonatomic) NSString<Optional>*eateryID;
     @property (strong,nonatomic) NSString<Optional>*slug;
     @property (strong,nonatomic) NSString<Optional>*avatar;
     @property (strong, nonatomic) NSString<Optional>* category;

@@ -23,9 +23,9 @@ int stateOfBtn;
     CGFloat h = size.height;
     CGFloat borderWidth = 3.0f;
     stateOfBtn = 1;
-  
-   
-
+    
+    
+    
     // Add view for navigation
     _viewBack = [[UIView alloc]init];
     _viewBack.backgroundColor = [UIColor grayColor];
@@ -55,14 +55,14 @@ int stateOfBtn;
     _scrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, _viewBack.frame.origin.y+_viewBack.frame.size.height, w, h-_viewBack.frame.size.height-_viewBack.frame.origin.y)];
     
     [self.view addSubview:_scrollView];
-
+    
     //add view Avatar to scrollView
     _viewAvatar = [[UIView alloc]initWithFrame:CGRectMake(0,0, w, h*0.4)];
     [_scrollView addSubview:_viewAvatar];
     _scrollView.backgroundColor = [UIColor colorWithRed:228.0f/255.0f green:228.0f/255.0f blue:228.0f/255.0f alpha:1];
     UIImageView *background = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, _viewAvatar.frame.size.width, _viewAvatar.frame.size.height)];
     [_viewAvatar insertSubview:background atIndex:0];
-     [background sd_setImageWithURL:[NSURL URLWithString: _user.avatar] ];
+    [background sd_setImageWithURL:[NSURL URLWithString: _user.avatar] ];
     background.contentMode = UIViewContentModeScaleToFill;
     background.clipsToBounds = YES;
     
@@ -92,7 +92,7 @@ int stateOfBtn;
     [lblName setFrame:CGRectMake(marginLeftName, lblName.frame.origin.y, lblName.frame.size.width, lblName.frame.size.height)];
     [_viewAvatar addSubview:lblName];
     
- 
+    
     
     UILabel *lblAddress = [[UILabel alloc]initWithFrame:CGRectMake(heightImage/2, lblName.frame.size.height+lblName.frame.origin.y+ heightImage/8, w, heightImage)];
     [lblAddress setFont:[UIFont preferredFontForTextStyle:UIFontTextStyleCaption1]];
@@ -106,7 +106,7 @@ int stateOfBtn;
     }
     [lblAddress setText:[NSString stringWithFormat:@"%@,%@",gender,_user.city]];
     [lblAddress sizeToFit];
-     marginLeftName = (_viewAvatar.frame.size.width - lblAddress.frame.size.width)/2;
+    marginLeftName = (_viewAvatar.frame.size.width - lblAddress.frame.size.width)/2;
     [lblAddress setFrame:CGRectMake(marginLeftName, lblAddress.frame.origin.y, lblAddress.frame.size.width, lblAddress.frame.size.height)];
     [_viewAvatar addSubview:lblAddress];
     
@@ -154,8 +154,8 @@ int stateOfBtn;
     
     [_viewFollower addSubview:follower];
     [_viewFollower addSubview:followerDes];
-
-   
+    
+    
     UILabel *following = [[UILabel alloc]initWithFrame:CGRectMake(eachFollower,follower.frame.origin.y, eachFollower, 1)];
     [following setFont:[UIFont preferredFontForTextStyle:UIFontTextStyleCaption2]];
     [following setTextColor:[UIColor blackColor]];
@@ -166,7 +166,7 @@ int stateOfBtn;
     [following setText:_user.followingUser];
     [following sizeToFit];
     [following setFrame:CGRectMake(eachFollower +(eachFollower-following.frame.size.width)/2, following.frame.origin.y, following.frame.size.width, following.frame.size.height)];
-
+    
     [_viewFollower addSubview:following];
     UILabel *followingDes = [[UILabel alloc]initWithFrame:CGRectMake(eachFollower, following.frame.origin.y+following.frame.size.height, eachFollower, 1)];
     [followingDes setFont:[UIFont preferredFontForTextStyle:UIFontTextStyleCaption2]];
@@ -202,7 +202,7 @@ int stateOfBtn;
     [pinDes sizeToFit];
     [pinDes setFrame:CGRectMake(2*eachFollower+(eachFollower-pinDes.frame.size.width)/2, pinDes.frame.origin.y, pinDes.frame.size.width, pinDes.frame.size.height)];
     [_viewFollower addSubview:pinDes];
-
+    
     
     _lblTitleAlbum = [[UILabel alloc]initWithFrame:CGRectMake(0,_viewFollower.frame.origin.y+ 10+ _viewFollower.frame.size.height, w, 1)];
     [_lblTitleAlbum setFont:[UIFont preferredFontForTextStyle:UIFontTextStyleCaption2]];
@@ -213,14 +213,14 @@ int stateOfBtn;
     [_lblTitleAlbum setFont:[UIFont boldSystemFontOfSize:follower.font.pointSize]];
     [_lblTitleAlbum setText:[NSString stringWithFormat:@"Bộ sưu tập của %@",_user.fullname]];
     [_lblTitleAlbum sizeToFit];
-   
+    
     // Request album for user
-   // http://latte.lozi.vn/v1/users/104970/albums?cityId=50
+    // http://latte.lozi.vn/v1/users/104970/albums?cityId=50
     _cityId= @"50";
     NSString *urlAlbumforUser = [NSString stringWithFormat:@"%@/users/%@/albums?cityId=%@",[AppConfig GetBaseNextPageUrl],_user._id,_cityId];
     [self SendRequest:urlAlbumforUser];
     // create table view for album of user
-   //_tableViewAlbumUser = [[MyTableView alloc] initWithFrame:CGRectMake(10, _viewFollower.frame.origin.y+_viewFollower.frame.size.height, w-20, 100)];
+    //_tableViewAlbumUser = [[MyTableView alloc] initWithFrame:CGRectMake(10, _viewFollower.frame.origin.y+_viewFollower.frame.size.height, w-20, 100)];
     _albumUserArray = [[NSMutableArray alloc]init];
     _sectionAlbumUserArray = [[NSMutableArray alloc]init];
     _tableViewAlbumUser = [[MyTableView alloc] initWithFrame:CGRectMake(10, 20, w-20, 100)];
@@ -228,10 +228,10 @@ int stateOfBtn;
     _tableViewAlbumUser.sectionContents = _sectionAlbumUserArray;
     _tableViewAlbumUser.numberOfRowEachSection = 2;
     _tableViewAlbumUser.backgroundColor = [UIColor colorWithRed:228.0f/255.0f green:228.0f/255.0f blue:228.0f/255.0f alpha:1];
-   
-   
     
-
+    
+    
+    
     
     // Do any additional setup after loading the view.
 }
@@ -250,7 +250,7 @@ int stateOfBtn;
                            [_scrollView addSubview:self.foodCollectionView];
                        }
                        
-
+                       
                    });
 }
 // function when click on care button
@@ -264,7 +264,7 @@ int stateOfBtn;
         CGFloat marginLeft = (_viewAvatar.frame.size.width - careBtn.frame.size.width*1.2)/2;
         [careBtn setFrame:CGRectMake(marginLeft, careBtn.frame.origin.y, careBtn.frame.size.width*1.2, careBtn.frame.size.height)];
         return;
-
+        
         
     }
     
@@ -282,55 +282,56 @@ int stateOfBtn;
 -(void) setupView
 {
     CGFloat margin = 10;
-
+    
     NSString *remainUrlBlock =[NSString stringWithFormat:@"/users/%@/blocks/uploaded?cityId=%@",_user._id,_cityId];
     FoodCollectionViewLayout* collectionLayout = [[FoodCollectionViewLayout alloc] init];
+    
     self.foodCollectionView.showsVerticalScrollIndicator = false;
     _foodLoader = [[FoodLoader alloc] init];
     [_foodLoader setDataLoaderDelegate:self];
-   
     
-
+    
+    
     if (IsHaveAblum == YES) {
         [_lblTitleAlbum setFrame:CGRectMake(([UIScreen mainScreen].bounds.size.width-_lblTitleAlbum.self.frame.size.width)/2, _lblTitleAlbum.frame.origin.y, _lblTitleAlbum.frame.size.width, _lblTitleAlbum.frame.size.height)];
         
         [_scrollView addSubview:_lblTitleAlbum];
-
+        
         [_tableViewAlbumUser setFrame:CGRectMake(margin,_lblTitleAlbum.frame.origin.y + margin + _lblTitleAlbum.frame.size.height, [UIScreen mainScreen].bounds.size.width - 2*margin,_tableViewAlbumUser.myTable.contentSize.height)];
         [_tableViewAlbumUser.myTable setFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width - 2*margin,_tableViewAlbumUser.myTable.contentSize.height)];
         _tableViewAlbumUser.backgroundColor = [UIColor colorWithRed:228.0f/255.0f green:228.0f/255.0f blue:228.0f/255.0f alpha:1];
         [_scrollView addSubview:_tableViewAlbumUser];
-        NSLog(@"%f %f",_viewFollower.frame.origin.y,_tableViewAlbumUser.frame.size.height);
         _scrollView.contentSize = CGSizeMake([UIScreen mainScreen].bounds.size.width, _tableViewAlbumUser.frame.origin.y + _tableViewAlbumUser.frame.size.height + 10.0f);
         
         // config collectionview when having album table
         
-            self.foodCollectionView = [[FoodCollectionView alloc] initWithFrame:CGRectMake(0, _tableViewAlbumUser.frame.origin.y+_tableViewAlbumUser.frame.size.height, [UIScreen mainScreen].bounds.size.width, 3000) collectionViewLayout:collectionLayout];
-         [self.foodCollectionView setDataLoader:_foodLoader withStartPage:remainUrlBlock];
+        self.foodCollectionView = [[FoodCollectionView alloc] initWithFrame:CGRectMake(0, _tableViewAlbumUser.frame.origin.y+_tableViewAlbumUser.frame.size.height, [UIScreen mainScreen].bounds.size.width, 3000) collectionViewLayout:collectionLayout];
+        self.foodCollectionView.parentViewContoller = self;
+        [self.foodCollectionView setDataLoader:_foodLoader withStartPage:remainUrlBlock];
         
     }
-   else
-   {
-       
-      
-           self.foodCollectionView = [[FoodCollectionView alloc] initWithFrame:CGRectMake(0, _viewFollower.frame.origin.y+_viewFollower.frame.size.height, [UIScreen mainScreen].bounds.size.width, 3000) collectionViewLayout:collectionLayout];
+    else
+    {
+        
+        
+        self.foodCollectionView = [[FoodCollectionView alloc] initWithFrame:CGRectMake(0, _viewFollower.frame.origin.y+_viewFollower.frame.size.height, [UIScreen mainScreen].bounds.size.width, 3000) collectionViewLayout:collectionLayout];
+        self.foodCollectionView.parentViewContoller = self;
         [self.foodCollectionView setDataLoader:_foodLoader withStartPage:remainUrlBlock];
-           _scrollView.contentSize = CGSizeMake([UIScreen mainScreen].bounds.size.width, _foodCollectionView.frame.origin.y + _foodCollectionView.frame.size.height);
-       
-
-   }
+        _scrollView.contentSize = CGSizeMake([UIScreen mainScreen].bounds.size.width, _foodCollectionView.frame.origin.y + _foodCollectionView.frame.size.height);
+        
+        
+    }
     
     // http://latte.lozi.vn/v1/users/104970/blocks/uploaded?cityId=50
-   
     
-   
+    
+    
     
 }
 -(void) SendRequest : (NSString*) urlBase
 {
     
     NSURL* url = [NSURL URLWithString:urlBase];
-    NSLog(@"url can tim %@",urlBase);
     NSMutableURLRequest* request = [[NSMutableURLRequest alloc] initWithURL:url];
     NSURLSession *session = [NSURLSession sharedSession];
     
@@ -376,7 +377,7 @@ int stateOfBtn;
                             [self setupView];
                             
                         });
-
+                        
                     }
                     
                     
@@ -394,11 +395,10 @@ int stateOfBtn;
 //Selector for back button
 -(IBAction)backToPrevious:(id)sender
 {
-    NSLog(@"Back btn");
     
     dispatch_async(dispatch_get_main_queue(), ^{
         [self dismissViewControllerAnimated:YES completion:nil];
-       
+        
     });
 }
 
@@ -408,13 +408,13 @@ int stateOfBtn;
 }
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 @end

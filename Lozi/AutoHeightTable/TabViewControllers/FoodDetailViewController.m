@@ -8,6 +8,7 @@
 
 #import "FoodDetailViewController.h"
 #import "FoodCollectionViewLayout.h"
+#import "SearchDetailFoodViewController.h"
 
 @implementation FoodDetailViewController
 
@@ -233,6 +234,7 @@
     
     FoodCollectionViewLayout* collectionLayout = [[FoodCollectionViewLayout alloc] init];
     self.relateCollectionView = [[FoodCollectionView alloc] initWithFrame:CGRectMake(0, 0, self.scrollViewContainer.frame.size.width, 0) collectionViewLayout:collectionLayout];
+    self.relateCollectionView.parentViewContoller = self;
     [self.relateCollectionView setParentScrollView:self.scrollViewContainer];
     self.relateCollectionView.showsVerticalScrollIndicator = false;
     
@@ -400,6 +402,7 @@
                                             self.shopAddressLabel.frame.origin.y,
                                             shopButtonWidht,
                                             shopButtonWidht)];
+        [self.shopButton addTarget:self action:@selector(onShopButtonTouch:) forControlEvents:UIControlEventTouchUpInside];
         
         //Shop Container
         float shopContainerHeight = self.shopTimeLabel.frame.origin.y + self.shopTimeLabel.frame.size.height + viewMargin;
@@ -519,4 +522,14 @@
                    });
 
 }
+
+-(void)onShopButtonTouch:(UIButton*)sender
+{
+    SearchDetailFoodViewController *foodViewController = [[SearchDetailFoodViewController alloc] init];
+    foodViewController.slug = self.foodModel.dish.eatery.slug;
+    [self presentViewController:foodViewController animated:NO completion:nil];
+}
+
+
+
 @end

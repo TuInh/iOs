@@ -131,6 +131,7 @@
     float collectionViewTop = self.menuView.frame.origin.y + self.menuView.frame.size.height;
     FoodCollectionViewLayout* collectionLayout = [[FoodCollectionViewLayout alloc] init];
     self.foodCollectionView = [[FoodCollectionView alloc] initWithFrame:CGRectMake(0, collectionViewTop, self.mainScrollView.frame.size.width, 0) collectionViewLayout:collectionLayout];
+    self.foodCollectionView.parentViewContoller = self;
     self.foodCollectionView.showsVerticalScrollIndicator = false;
     [self.foodCollectionView setParentScrollView:self.mainScrollView];
     [self.foodCollectionView setDataLoader: [[FoodLoader alloc]init]];
@@ -167,7 +168,7 @@
     
     CustomDropDownList* vc = [[CustomDropDownList alloc] initWithDictionary:self.urlDictionary];
     [vc setDropDownDelegate:self];
-    [[AppConfig GetMainController] presentViewController:vc animated:NO completion:nil];
+    [self presentViewController:vc animated:NO completion:nil];
     
     
 }
@@ -181,7 +182,7 @@
     self.comboTextField.titleLabel.transform = CGAffineTransformMakeScale(-1.0, 1.0);
     self.comboTextField.imageView.transform = CGAffineTransformMakeScale(-1.0, 1.0);
     [self.foodCollectionView.dataLoader ReloadDataWithURL: [self.urlDictionary objectForKey:item]];
-    [[AppConfig GetMainController] dismissViewControllerAnimated:false completion:nil];
+    [self dismissViewControllerAnimated:false completion:nil];
 }
 
 

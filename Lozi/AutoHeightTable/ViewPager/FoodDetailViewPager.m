@@ -56,9 +56,19 @@
     if (self.foodModelArray.count > 0)
     {
         FoodDetailViewController* newViewController = [[FoodDetailViewController alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height)];
-        [newViewController setFoodModel:self.foodModelArray[0]];
+        
+        if (self.firstFoodModel != nil)
+        {
+            [newViewController setFoodModel:self.firstFoodModel];
+
+        }
+        else
+        {
+            [newViewController setFoodModel:self.foodModelArray[0]];
+            self.firstFoodModel = [self.foodModelArray objectAtIndex:0];
+        }
     
-        [self.searchBar setText: [self.foodModelArray objectAtIndex:0].dish.foodName];
+        [self.searchBar setText: self.firstFoodModel.dish.foodName];
         [self.searchBar setClearButtonMode:UITextFieldViewModeWhileEditing];
         NSArray *initArray = [NSArray arrayWithObject:newViewController];
         [self.pageController setViewControllers:initArray direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];

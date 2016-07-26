@@ -9,4 +9,11 @@
 #import "EateryModel.h"
 
 @implementation EateryModel
+
++(JSONKeyMapper*)keyMapper
+{
+    return [[JSONKeyMapper alloc] initWithDictionary:@{
+                                                       @"id": @"eateryID"
+                                                       }];
+}
 @end

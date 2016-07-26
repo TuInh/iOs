@@ -135,7 +135,7 @@
                                             self.avatarImageView.frame.origin.y + self.avatarImageView.frame.size.height + lineSpace,
                                             viewWidth,
                                             viewWidth / self.dataModel.scale)];
-    [self.foodImageView setBackgroundColor:[UIColor brownColor]];
+    [self.foodImageView setBackgroundColor: [self randomColor]];
     [self.foodImageView sd_setImageWithURL: [NSURL URLWithString: self.dataModel.image]];
     
     
@@ -171,16 +171,16 @@
 - (void)imageTouched:(UIGestureRecognizer *)gestureRecognizer {
     if (self.dataModel != NULL)
     {
-        /*
-        FoodDetailViewController* viewController = [[FoodDetailViewController alloc] initWithFrame:CGRectMake(0, 0, 300, 300)];
-        [viewController setFoodModel:self.dataModel];
-        [[AppConfig GetMainController] presentViewController:viewController animated:false completion:nil];
-        */
         
-        FoodDetailViewPager* viewController = [[FoodDetailViewPager alloc] init];
-        [viewController setFoodModelArray: self.foodModelArray];
-        //[viewController.view setFrame:CGRectMake(0, 0, 300, 600)];
-        [[AppConfig GetMainController] presentViewController:viewController animated:false completion:nil];
+        if (self.paremtViewControler != nil)
+        {
+            FoodDetailViewPager* viewController = [[FoodDetailViewPager alloc] init];
+            [viewController setFoodModelArray: self.foodModelArray];
+            viewController.firstFoodModel = self.dataModel;
+            [self.paremtViewControler presentViewController:viewController animated:false completion:nil];
+        }
+        
+        
     }
 }
 @end

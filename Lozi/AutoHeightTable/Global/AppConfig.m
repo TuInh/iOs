@@ -12,7 +12,7 @@
 
 
 //Main Controller
-static UIViewController* mainController = nil;
+//static UIViewController* mainController = nil;
 
 //View Layout Config
 static float mViewMargin = 10.0f;
@@ -135,6 +135,7 @@ static NSString *slugAlbumBase = @"http://latte.lozi.vn/v1/albums/";
     [AppConfig SaveAppConfig];
 }
 
+/*
 +(UIViewController*) GetMainController
 {
     return mainController;
@@ -144,6 +145,7 @@ static NSString *slugAlbumBase = @"http://latte.lozi.vn/v1/albums/";
 {
     mainController = controller;
 }
+*/
 
 +(UIColor*) GetAppBackgroundColor
 {

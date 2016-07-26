@@ -11,5 +11,6 @@
 @interface AroundCollectionViewCell : UICollectionViewCell
 @property (strong,nonatomic) UIImageView *avatar;
 @property(strong,nonatomic) UILabel *type;
+
 -(void)setupView;
 @end

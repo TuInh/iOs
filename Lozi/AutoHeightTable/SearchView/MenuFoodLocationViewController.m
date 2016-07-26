@@ -63,12 +63,9 @@
     // Do any additional setup after loading the view.
     NSString *url = [NSString stringWithFormat:@"%@/eateries/%@/dishes?cityId=%@",[AppConfig GetBaseNextPageUrl],self._id,cityId];
     [self SendRequest:url];
-    NSLog(@"menu is %@",url);
 }
 -(IBAction)backToPrevious:(id)sender
 {
-    NSLog(@"Back btn");
-    
     dispatch_async(dispatch_get_main_queue(), ^{
         [self dismissViewControllerAnimated:YES completion:nil];
         
@@ -94,7 +91,6 @@
 {
     
     NSURL* url = [NSURL URLWithString:urlBase];
-    NSLog(@"url can tim %@",urlBase);
     NSMutableURLRequest* request = [[NSMutableURLRequest alloc] initWithURL:url];
     NSURLSession *session = [NSURLSession sharedSession];
     

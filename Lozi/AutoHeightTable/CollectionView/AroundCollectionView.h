@@ -15,6 +15,7 @@
 @property(strong,nonatomic) NSMutableArray *aroundDataArray;
 @property(strong,nonatomic) UIScrollView *parentView;
 @property(nonatomic,assign) bool isScrollable;
+@property(nonatomic, strong) UIViewController* parentViewController;
 
 - (instancetype)initWithFrame:(CGRect)frame withType: (bool) isScrollable;
 @end

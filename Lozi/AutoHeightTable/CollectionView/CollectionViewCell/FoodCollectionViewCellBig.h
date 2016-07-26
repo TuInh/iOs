@@ -28,6 +28,7 @@
 
 @property (strong, nonatomic) FoodModel* dataModel;
 
+
 -(void) refreshLayout;
 -(void) setupView;
 @end

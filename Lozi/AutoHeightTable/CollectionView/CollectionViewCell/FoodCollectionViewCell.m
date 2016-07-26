@@ -13,4 +13,11 @@
 {
     
 }
+
+-(UIColor*) randomColor
+{
+    NSArray* colorArray = [NSArray arrayWithObjects: [UIColor brownColor], [UIColor blueColor], [UIColor greenColor], [UIColor purpleColor], [UIColor magentaColor], [UIColor orangeColor], nil];
+    
+    return [colorArray objectAtIndex:arc4random() % colorArray.count];
+}
 @end

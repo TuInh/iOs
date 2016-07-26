@@ -30,8 +30,8 @@
 +(void) SetCityString:(NSString*) cityString;
 
 
-+(UIViewController*) GetMainController;
-+(void) SetMainController:(UIViewController*) controller;
+//+(UIViewController*) GetMainController;
+//+(void) SetMainController:(UIViewController*) controller;
 
 +(UIColor*) GetAppBackgroundColor;
 +(NSString*) GetAroundBaseURL;

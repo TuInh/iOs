@@ -13,23 +13,24 @@
 #import "AnnotationMap.h"
 #import "AppConfig.h"
 #import "UserModel.h"
+#import "AroundModel.h"
 #import "FoodCollectionView.h"
 #import "FoodCollectionViewLayout.h"
 #import "DataLoader.h"
 
-@interface AlbumDetailViewController : UIViewController<MKMapViewDelegate, DataLoaderDelegate, UIScrollViewDelegate>
-@property (strong,nonatomic) AlbumsModel *album;
+@interface AroundSearchViewController : UIViewController<MKMapViewDelegate, DataLoaderDelegate, UIScrollViewDelegate, CLLocationManagerDelegate>
+
 @property (strong,nonatomic) UIView *viewBack;
 @property (strong,nonatomic) UIView *viewImage;
-@property (strong,nonatomic) UIView *viewDescription;
-@property (strong,nonatomic) UIView *viewFollower;
 @property (strong,nonatomic) MKMapView *map;
 @property (strong,nonatomic) UIScrollView *scrollView;
 @property (strong,nonatomic) UIImage *imgBackground;
 @property(strong,nonatomic) FoodLoader* foodLoader;
-
-@property (strong, nonatomic) NSMutableArray* followerArray;
 @property(strong,nonatomic) FoodCollectionView *foodCollectionView;
+@property(strong,nonatomic) CLLocation *currentLocaltion;
+@property(strong,nonatomic) CLLocationManager *locationManager;
+@property(strong,nonatomic) AroundModel* aroundModel;
+@property(assign,nonatomic) bool isFirstLoadLocation;
 @property(assign,nonatomic) bool isAnnotation;
 @end
 

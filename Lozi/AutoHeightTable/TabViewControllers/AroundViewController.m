@@ -65,7 +65,7 @@
     self.aroundCollectionView = [[AroundCollectionView alloc] initWithFrame:CGRectMake(viewMargin, collectionViewTop, self.mainScrollView.frame.size.width - 2.0f * viewMargin, 0)];
     [self.aroundCollectionView setParentView:self.mainScrollView];
     self.aroundCollectionView.showsVerticalScrollIndicator = false;
-    
+    self.aroundCollectionView.parentViewController = self;
     
     
     [self.mainScrollView setContentSize:CGSizeMake(self.view.frame.size.width, collectionViewTop)];

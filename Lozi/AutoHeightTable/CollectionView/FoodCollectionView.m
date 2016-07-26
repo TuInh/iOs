@@ -118,6 +118,10 @@
     
     if (cell != nil)
     {
+        if (self.parentViewContoller != nil)
+        {
+            cell.paremtViewControler = self.parentViewContoller;
+        }
         FoodModel* foodModel = [self.dataLoader.dataArray objectAtIndex:indexPath.item];
         [cell loadDataModel:foodModel];
         [cell setFoodModelArray:self.dataLoader.dataArray];

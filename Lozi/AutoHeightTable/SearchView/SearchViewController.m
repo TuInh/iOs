@@ -31,13 +31,13 @@
     [popularDictionary setObject: [NSNumber numberWithInt:1] forKey: @"type"];
     [popularDictionary setObject: @"Phổ biến" forKey: @"caption"];
     [self.sectionContentArray addObject:popularDictionary];
-
+    
     [self.view setFrame:[[UIScreen mainScreen] bounds]];
     [self.view setBackgroundColor:[AppConfig GetAppBackgroundColor]];
     
     float viewMargin = [AppConfig GetViewMargin];
     float menuPadding = 5.0f;
-    float searchBarHeight = self.view.frame.size.height / 18.0f;
+    float searchBarHeight = self.view.frame.size.height / 16.0f;
     float searchBarTop = 30;
     
     self.searchBarContainer = [[UIView alloc] initWithFrame:CGRectMake(0, searchBarTop, self.view.frame.size.width, searchBarHeight + 2.0f * menuPadding)];
@@ -62,12 +62,6 @@
                                                                      self.view.frame.size.height - tableTop)];
     self.myTableView.sectionContents = self.sectionContentArray;
     [self.view addSubview:self.myTableView];
-    
-    // Do any additional setup after loading the view, typically from a nib.
-    CGFloat h = [UIScreen mainScreen].bounds.size.height;
-    CGFloat w = [UIScreen mainScreen].bounds.size.width;
-    
-    
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showDetailEatery:) name:@"Jump Detail Eatery" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showDetailAlbum:) name:@"Jump Detail Album" object:nil];
@@ -99,19 +93,14 @@
 -(void) SendRequestWithQueryString:(NSString*) queryString
 {
     NSString *urlBase = [NSString stringWithFormat:@"http://latte.lozi.vn/v1/search/suggestion?q=%@&cityId=%ld", queryString, [AppConfig GetCityID]];
-    /* NSString *urlBase = @"http://lozi.vn/search/b?q=";
-    NSString *inputString = @"trứng-gà";
-    NSString *encodeString = [inputString stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLHostAllowedCharacterSet]];
-    urlBase = [[urlBase stringByAppendingString:encodeString] stringByAppendingString:@"&a=ho-chi-minh"];
-     */
-     NSURL* url = [NSURL URLWithString:urlBase];
-     
+    NSURL* url = [NSURL URLWithString:urlBase];
+    
     NSMutableURLRequest* request = [[NSMutableURLRequest alloc] initWithURL:url];
     NSURLSession *session = [NSURLSession sharedSession];
     
     NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-       NSString *str = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-    NSLog(@"%@",str);
+        
+        
         if (data.length > 0 && error== nil) {
             [self.sectionContentArray removeAllObjects];
             NSDictionary *jsonResult = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
@@ -133,7 +122,7 @@
                     [eateryDictitionary setObject: [NSNumber numberWithInt:3] forKey: @"type"];
                     [eateryDictitionary setObject: @"Địa điểm" forKey: @"caption"];
                     [self.sectionContentArray addObject:eateryDictitionary];
-
+                    
                     
                     
                     NSMutableDictionary* albumsDictitionary = [[NSMutableDictionary alloc] init];
@@ -149,7 +138,7 @@
                     
                 }
             }
-
+            
         }
     }];
     [task resume];
