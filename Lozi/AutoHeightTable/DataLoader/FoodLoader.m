@@ -114,6 +114,7 @@
                                                           dispatch_async(dispatch_get_main_queue(),
                                                                          ^
                                                                          {
+                                                                             /*
                                                                              if (!self.isFirstLoad)
                                                                              {
                                                                                  [UIView performWithoutAnimation:^{
@@ -126,7 +127,8 @@
                                                                              {
                                                                                  [self.dataView reloadData];
                                                                              }
-                                                                             
+                                                                             */
+                                                                             [self.dataView reloadData];
                                                                              if (self.dataLoaderDelegate != nil)
                                                                              {
                                                                                  [self.dataLoaderDelegate onDataLoadedSucessWithData];
