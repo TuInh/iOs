@@ -17,6 +17,9 @@
 #import "FoodViewController.h"
 #import "ShopViewController.h"
 #import "ShipViewController.h"
+#import "MyPhamViewController.h"
+#import "DoDienViewController.h"
+#import "HairViewController.h"
 #import "OtherViewController.h"
 #import "Top50ViewController.h"
 #import "EventViewController.h"
@@ -38,6 +41,9 @@
 @property(strong, nonatomic) FoodViewController *foodViewController;
 @property(strong, nonatomic) ShopViewController *shopViewController;
 @property(strong, nonatomic) ShipViewController *shipViewController;
+@property(strong, nonatomic) MyPhamViewController *myPhamViewController;
+@property(strong, nonatomic) DoDienViewController *doDienViewController;
+@property(strong, nonatomic) HairViewController *hairViewController;
 @property(strong, nonatomic) OtherViewController *otherViewController;
 @property(strong, nonatomic) Top50ViewController *top50ViewController;
 @property(strong, nonatomic) EventViewController *eventViewController;

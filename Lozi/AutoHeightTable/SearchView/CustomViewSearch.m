@@ -41,7 +41,9 @@
             _txtSearch.adjustsFontSizeToFitWidth = YES;
             _txtSearch.minimumFontSize = 0.5;
             _txtSearch.textAlignment = NSTextAlignmentLeft;
-            _txtSearch.font = [UIFont fontWithName:@"Helvetica" size:20];
+            //_txtSearch.font = [UIFont fontWithName:@"Helvetica" size:20];_txtSearch.font = [UIFont fontWithName:@"Helvetica" size:20];
+            _txtSearch.font = [UIFont systemFontOfSize:16.0f];
+            [_txtSearch setTextColor:[UIColor blackColor]];
             [_txtSearch addTarget:self action:(@selector(SearchFoodName)) forControlEvents:UIControlEventEditingDidBegin];
             _txtSearch.delegate = self;
             [self addSubview:_txtSearch];
@@ -80,8 +82,8 @@
 }
 -(BOOL) textFieldShouldReturn:(UITextField *)textField
 {
-    [textField resignFirstResponder];
-    return YES;
+    //[textField resignFirstResponder];
+    return NO;
 }
 -(void)SearchFoodName
 {

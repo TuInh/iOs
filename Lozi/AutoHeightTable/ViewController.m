@@ -80,11 +80,14 @@
     self.foodViewController = [[FoodViewController alloc]init];
     self.shopViewController = [[ShopViewController alloc]init];
     self.shipViewController = [[ShipViewController alloc]init];
+    self.myPhamViewController = [[MyPhamViewController alloc]init];
+    self.doDienViewController = [[DoDienViewController alloc]init];
+    self.hairViewController = [[HairViewController alloc]init];
     self.otherViewController = [[OtherViewController alloc]init];
     self.top50ViewController = [[Top50ViewController alloc]init];
     self.eventViewController = [[EventViewController alloc]init];
     
-    self.items = @[@"Quanh đây", @"Đồ ăn", @"Góc con gái", @"Đồ ăn ship", @"Khác", @"Top 50", @"Sự kiện"];
+    self.items = @[@"Quanh đây", @"Đồ ăn", @"Góc con gái", @"Đồ ăn ship", @"Mỹ phẩm", @"Đồ điện", @"Tóc, móng và làm đẹp", @"Khác", @"Top 50", @"Sự kiện"];
     self.carbonTabSwipeNavigation = [[CarbonTabSwipeNavigation alloc] initWithItems:self.items delegate:self];
     [self.carbonTabSwipeNavigation insertIntoRootViewController:self.swipeTabContainer];
     [self style];
@@ -149,16 +152,32 @@
     
     else if (index == 4)
     {
+        return self.myPhamViewController;
+    }
+    
+    else if (index == 5)
+    {
+        return self.doDienViewController;
+    }
+    
+    else if (index == 6)
+    {
+        return self.hairViewController;
+    }
+    
+    
+    else if (index == 7)
+    {
         return self.otherViewController;
     }
     
     
-    else if (index == 5)
+    else if (index == 8)
     {
         return self.top50ViewController;
     }
     
-    else if (index == 6)
+    else if (index == 9)
     {
         return self.eventViewController;
     }

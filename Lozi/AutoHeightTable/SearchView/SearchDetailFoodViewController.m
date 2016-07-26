@@ -65,10 +65,12 @@
     
     
     
-    UIImage *imgInitial = [UIImage imageNamed:@"marker"];
+    
     CGFloat widthBackground = h *0.08;
-    CGFloat heightBackground = widthBackground* (imgInitial.size.height/imgInitial.size.width);
-    _imgBackground = imgInitial;
+    CGFloat heightBackground = widthBackground* (self.imgBackground.size.height/self.imgBackground.size.width);
+    
+    //UIImage *imgInitial = [UIImage imageNamed:@"marker"];
+    //_imgBackground = imgInitial;
   
 
     _scrollView.contentSize = CGSizeMake(w, h-_viewBack.frame.size.height -_viewBack.frame.origin.y );
@@ -715,6 +717,8 @@
 }
 -(UIImage*) roundedImageFromImage:(UIImage *)image size:(CGSize)imageSize withCornerRadius:(float)cornerRadius
 {
+    UIImage* _imgBackground = [UIImage imageNamed:@"marker"];
+    
     // create circle image with white border
     UIGraphicsBeginImageContextWithOptions(imageSize, NO, image.scale);
     CGRect bounds = (CGRect){.origin = CGPointZero,.size = imageSize};

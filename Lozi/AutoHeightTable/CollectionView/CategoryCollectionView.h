@@ -12,4 +12,5 @@
 @interface CategoryCollectionView : UICollectionView<UICollectionViewDataSource,UICollectionViewDelegate>
 @property(strong,nonatomic) NSMutableArray *categoryDataArray;
 @property(strong,nonatomic) UIScrollView *parentView;
+@property(strong,nonatomic) UIViewController *parentViewController;
 @end

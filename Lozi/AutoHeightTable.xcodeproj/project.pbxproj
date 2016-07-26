@@ -54,6 +54,9 @@
 		F18880451CEB2D5300E38EBD /* EateryModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F18880441CEB2D5300E38EBD /* EateryModel.m */; };
 		F18880481CEB2E0200E38EBD /* FoodCountModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F18880471CEB2E0200E38EBD /* FoodCountModel.m */; };
 		F1919ACF1D46C8AC00B566E2 /* AroundSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1919ACE1D46C8AC00B566E2 /* AroundSearchViewController.m */; };
+		F1919AD21D47040B00B566E2 /* DoDienViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1919AD11D47040B00B566E2 /* DoDienViewController.m */; };
+		F1919AD71D47041200B566E2 /* HairViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1919AD41D47041200B566E2 /* HairViewController.m */; };
+		F1919AD81D47041200B566E2 /* MyPhamViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1919AD61D47041200B566E2 /* MyPhamViewController.m */; };
 		F19288201D0C0E31000FA548 /* DataLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = F192881F1D0C0E31000FA548 /* DataLoader.m */; };
 		F19288231D0C220F000FA548 /* BannerLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = F19288221D0C220F000FA548 /* BannerLoader.m */; };
 		F1AB82241D339E4F005B3A0F /* CategoryModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F1AB82231D339E4F005B3A0F /* CategoryModel.m */; };
@@ -205,6 +208,12 @@
 		F18880471CEB2E0200E38EBD /* FoodCountModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FoodCountModel.m; sourceTree = "<group>"; };
 		F1919ACD1D46C8AC00B566E2 /* AroundSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AroundSearchViewController.h; sourceTree = "<group>"; };
 		F1919ACE1D46C8AC00B566E2 /* AroundSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AroundSearchViewController.m; sourceTree = "<group>"; };
+		F1919AD01D47040B00B566E2 /* DoDienViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoDienViewController.h; sourceTree = "<group>"; };
+		F1919AD11D47040B00B566E2 /* DoDienViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DoDienViewController.m; sourceTree = "<group>"; };
+		F1919AD31D47041200B566E2 /* HairViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HairViewController.h; sourceTree = "<group>"; };
+		F1919AD41D47041200B566E2 /* HairViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HairViewController.m; sourceTree = "<group>"; };
+		F1919AD51D47041200B566E2 /* MyPhamViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyPhamViewController.h; sourceTree = "<group>"; };
+		F1919AD61D47041200B566E2 /* MyPhamViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyPhamViewController.m; sourceTree = "<group>"; };
 		F192881E1D0C0E31000FA548 /* DataLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataLoader.h; sourceTree = "<group>"; };
 		F192881F1D0C0E31000FA548 /* DataLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataLoader.m; sourceTree = "<group>"; };
 		F19288211D0C220F000FA548 /* BannerLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BannerLoader.h; sourceTree = "<group>"; };
@@ -389,6 +398,12 @@
 		F1200A6D1D367D8C002FD45D /* TabViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				F1919AD31D47041200B566E2 /* HairViewController.h */,
+				F1919AD41D47041200B566E2 /* HairViewController.m */,
+				F1919AD51D47041200B566E2 /* MyPhamViewController.h */,
+				F1919AD61D47041200B566E2 /* MyPhamViewController.m */,
+				F1919AD01D47040B00B566E2 /* DoDienViewController.h */,
+				F1919AD11D47040B00B566E2 /* DoDienViewController.m */,
 				F1200A6E1D367D8C002FD45D /* AroundViewController.h */,
 				F1200A6F1D367D8C002FD45D /* AroundViewController.m */,
 				F1200A701D367D8C002FD45D /* EventViewController.h */,
@@ -848,6 +863,7 @@
 				F1200AA81D367E2C002FD45D /* EventCollectionView.m in Sources */,
 				F1200A8A1D367D9B002FD45D /* BannerPagerController.m in Sources */,
 				F1200AC41D39D732002FD45D /* CategoryCollectionViewCell.m in Sources */,
+				F1919AD81D47041200B566E2 /* MyPhamViewController.m in Sources */,
 				F1200A6C1D367D75002FD45D /* CustomLabel.m in Sources */,
 				F1AB82271D33AF15005B3A0F /* AttendeeModel.m in Sources */,
 				F1E42F241CDEEB56006D68A0 /* AppDelegate.m in Sources */,
@@ -863,6 +879,7 @@
 				F1403EE01D2D820D0026FDB5 /* CarbonSwipeRefresh.m in Sources */,
 				F1200AC71D39D732002FD45D /* FoodCollectionViewCellBig.m in Sources */,
 				F1919ACF1D46C8AC00B566E2 /* AroundSearchViewController.m in Sources */,
+				F1919AD21D47040B00B566E2 /* DoDienViewController.m in Sources */,
 				F1AEFD3D1D418AF600552676 /* CustomViewSearch.m in Sources */,
 				F1200AA61D367E2C002FD45D /* CategoryCollectionView.m in Sources */,
 				F1AEFD481D418BA300552676 /* UserDetailViewController.m in Sources */,
@@ -884,6 +901,7 @@
 				F1200B051D39E968002FD45D /* CommentLoader.m in Sources */,
 				F1200A7F1D367D8C002FD45D /* OtherViewController.m in Sources */,
 				F1403EE31D2D820D0026FDB5 /* CarbonTabSwipeSegmentedControl.m in Sources */,
+				F1919AD71D47041200B566E2 /* HairViewController.m in Sources */,
 				F1200AC31D39D732002FD45D /* AroundCollectionViewCell.m in Sources */,
 				F1AC7ADF1D3415C6008ECECF /* EventLoader.m in Sources */,
 				F1E42F211CDEEB56006D68A0 /* main.m in Sources */,

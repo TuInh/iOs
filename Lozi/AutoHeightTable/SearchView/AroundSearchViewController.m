@@ -16,6 +16,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.anotationArray = [[NSMutableArray alloc] init];
     self.isFirstLoadLocation = true;
     // Do any additional setup after loading the view.
     self.isAnnotation = NO;
@@ -49,17 +50,21 @@
     searchView.layer.borderWidth = borderWidth;
     searchView.layer.borderColor = [UIColor blackColor].CGColor;
     [searchView.txtSearch setText:self.aroundModel.name];
-    
     [_viewBack addSubview:searchView];
-
     [self.view addSubview:_viewBack];
+    
+   
 
     _scrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, _viewBack.frame.origin.y+_viewBack.frame.size.height, w, h-_viewBack.frame.size.height-_viewBack.frame.origin.y)];
     
     [self.view addSubview:_scrollView];
     
+    
+    
+    
+    
     //Init current location
-    self.currentLocaltion = [[CLLocation alloc] initWithLatitude: 21.017324f longitude:105.784054f];
+    self.currentLocaltion = CLLocationCoordinate2DMake(21.017324f, 105.784054f);
     
     // add map
     _map = [[MKMapView alloc]initWithFrame:CGRectMake(0, 0, w, h/2)];
@@ -68,7 +73,7 @@
     _map.mapType = MKMapTypeStandard;
     _map.zoomEnabled = YES;
     _map.scrollEnabled = YES;
-    [_map setCenterCoordinate:self.currentLocaltion.coordinate];
+    [_map setCenterCoordinate:self.currentLocaltion];
     
     //Init Location Manager
     _locationManager = [CLLocationManager new];
@@ -87,9 +92,21 @@
         [_locationManager startUpdatingLocation]; //Will update location immediately 
     }
     
+    //Add result View
+    float viewMargin = [AppConfig GetViewMargin];
+    self.resultLabel = [[UILabel alloc] initWithFrame:CGRectMake(viewMargin, viewMargin, 12, 12)];
+    [self.resultLabel setFont:[UIFont boldSystemFontOfSize:14.0f]];
+    [self.resultLabel setTextColor:[UIColor whiteColor]];
+    [self.resultLabel setText: @"Không tìm thấy kết quả nào"];
+    [self.resultLabel sizeToFit];
     
-    //http://latte.lozi.vn/v1/newsfeed/photos?lng=105.83046851679683&topics=999&t=around&r=320&cityId=1&lat=21.01592557483175
-    NSString *remainUrlBlock =[NSString stringWithFormat:@"%@/newsfeed/photos?lng=%f&topics=%@&t=around&r=320&cityId=%ld&lat=%f", [AppConfig GetBaseNextPageUrl], self.currentLocaltion.coordinate.longitude, self.aroundModel.idAround, [AppConfig GetCityID], self.currentLocaltion.coordinate.latitude];
+    self.resultView = [[UIView alloc] initWithFrame: CGRectMake(0, 0, self.view.frame.size.width, self.resultLabel.frame.size.height + 2.0f * viewMargin)];
+    [self.resultView addSubview:self.resultLabel];
+    [self.resultView setBackgroundColor:[UIColor blueColor]];
+    [self.scrollView addSubview:self.resultView];
+    [self.resultView setHidden:true];
+    
+   
    FoodCollectionViewLayout* collectionLayout = [[FoodCollectionViewLayout alloc] init];
     self.foodCollectionView = [[FoodCollectionView alloc] initWithFrame:CGRectMake(0, self.map.frame.origin.y+self.map.frame.size.height, w, 10) collectionViewLayout:collectionLayout];
     self.foodCollectionView.showsVerticalScrollIndicator = false;
@@ -97,12 +114,17 @@
     self.foodCollectionView.parentViewContoller = self;
     _foodLoader = [[FoodLoader alloc] init];
     [_foodLoader setDataLoaderDelegate:self];
-    [self.foodCollectionView setDataLoader:_foodLoader withStartPage:remainUrlBlock];
+    [self searchAroundFood];
     [_scrollView addSubview:self.foodCollectionView];
     _scrollView.contentSize = CGSizeMake(w, _foodCollectionView.frame.origin.y + _foodCollectionView.frame.size.height);
 
     [_scrollView setDelegate: self];
     
+    UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(mapTouched:)];
+    singleTap.numberOfTapsRequired = 1;
+    singleTap.numberOfTouchesRequired = 1;
+    [self.map addGestureRecognizer:singleTap];
+    [self.map setUserInteractionEnabled:YES];
 }
 
 #pragma mark - CLLocationManagerDelegate
@@ -128,28 +150,37 @@
     if (self.isFirstLoadLocation == true)
     {
         self.isFirstLoadLocation = false;
-        self.currentLocaltion = [locations lastObject];
-        [_map setCenterCoordinate:self.currentLocaltion.coordinate];
-        NSString *remainUrlBlock =[NSString stringWithFormat:@"%@/newsfeed/photos?lng=%f&topics=%@&t=around&r=320&cityId=%ld&lat=%f", [AppConfig GetBaseNextPageUrl], self.currentLocaltion.coordinate.longitude, self.aroundModel.idAround, [AppConfig GetCityID], self.currentLocaltion.coordinate.latitude];
-        [self.foodCollectionView setDataLoader:_foodLoader withStartPage:remainUrlBlock];
-        [self.locationManager stopUpdatingLocation];
+        CLLocation* newLocation = [locations lastObject];
+        if (newLocation != nil)
+        {
+            [_map setCenterCoordinate:newLocation.coordinate];
+            self.currentLocaltion = newLocation.coordinate;
+            [self searchAroundFood];
+        }
     }
 }
 
 
 -(void)onDataLoadedSucessWithData
 {
-    
-
      dispatch_async(dispatch_get_main_queue(),
      ^
      {
-         if(self.isAnnotation == NO && _foodLoader.dataArray.count >0)
+         /*
+         if (self.anotationArray.count > 0)
          {
-             self.isAnnotation = YES;
-             
-             if (_foodLoader.dataArray.count > 0)
+             [self.map removeAnnotations:self.anotationArray];
+             [self.anotationArray removeAllObjects];
+         }
+         */
+         
+         if ((_foodLoader.dataArray != nil) && (_foodLoader.dataArray.count > 0))
+         {
+             if(self.isAnnotation == NO)
              {
+                 self.isAnnotation = YES;
+                 
+                 
                  FoodModel *foodmodel = [_foodLoader.dataArray objectAtIndex:0];
                  CLLocationDegrees lattitude = [[foodmodel.eateryCoords objectAtIndex:1] floatValue];
                  CLLocationDegrees longtitude = [[foodmodel.eateryCoords objectAtIndex:0] floatValue];
@@ -174,12 +205,18 @@
                      annotation.coordinate = location;
                      annotation.tag = i;
                      [_map addAnnotation:annotation];
+                     [self.anotationArray addObject:annotation];
                  }
+                 
              }
-             
          }
+         else
+         {
+             [self.resultView setHidden:false];
+         }
+        
      });
-     
+    
     
 }
 
@@ -277,6 +314,24 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+- (void) searchAroundFood
+{
+    [self.resultView setHidden:true];
+    NSString *remainUrlBlock =[NSString stringWithFormat:@"%@/newsfeed/photos?lng=%f&topics=%@&t=around&r=320&cityId=%ld&lat=%f", [AppConfig GetBaseNextPageUrl], self.currentLocaltion.longitude, self.aroundModel.idAround, [AppConfig GetCityID], self.currentLocaltion.latitude];
+    [self.foodCollectionView setDataLoader:_foodLoader withStartPage:remainUrlBlock];
+    [self.locationManager stopUpdatingLocation];
+}
+
+- (void)mapTouched:(UIGestureRecognizer *)gestureRecognizer {
+    CGPoint point = [gestureRecognizer locationInView:self.map];
+    CLLocationCoordinate2D tapPoint = [self.map convertPoint:point toCoordinateFromView:self.view];
+    [self.map setCenterCoordinate:tapPoint];
+    self.currentLocaltion = tapPoint;
+    [self searchAroundFood];
+    
+}
+
 
 /*
 #pragma mark - Navigation

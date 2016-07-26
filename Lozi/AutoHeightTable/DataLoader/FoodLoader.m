@@ -93,7 +93,14 @@
                                                           NSString* nextUrl = [paginationObject valueForKey:@"nextUrl"];
                                                           if ((nextUrl != nil))
                                                           {
-                                                              self.nextURl = nextUrl;
+                                                              if (![nextUrl isKindOfClass:[NSNull class]])
+                                                              {
+                                                                  self.nextURl = nextUrl;
+                                                              }
+                                                              else
+                                                              {
+                                                                  self.nextURl = @"";
+                                                              }
                                                           }
                                                           else
                                                           {
@@ -148,7 +155,7 @@
 {
     
     self.isFirstLoad = false;
-    if ((self.nextURl != nil))
+    if ((self.nextURl != nil) && (self.nextURl.length > 0))
     {
         self.currentURl = [[AppConfig GetBaseNextPageUrl] stringByAppendingString: self.nextURl];
     }

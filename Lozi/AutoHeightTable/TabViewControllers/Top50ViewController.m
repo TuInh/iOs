@@ -32,7 +32,9 @@
     self.aroundCollectionView = [[AroundCollectionView alloc] initWithFrame:CGRectMake(0, collectionViewTop, self.mainScrollView.frame.size.width, self.mainScrollView.frame.size.width / 3.0f) withType:true];
     [self.aroundCollectionView setParentView:self.mainScrollView];
     self.aroundCollectionView.showsVerticalScrollIndicator = false;
+    self.aroundCollectionView.parentViewController = self;
     [self.mainScrollView addSubview:self.aroundCollectionView];
+    
     
     self.categoryLabel = [[UILabel alloc] initWithFrame:CGRectMake(viewMargin, self.aroundCollectionView.frame.origin.y + self.aroundCollectionView.frame.size.height + viewMargin, 10, 10)];
     [self.categoryLabel setFont:[UIFont preferredFontForTextStyle: UIFontTextStyleCaption1]];
